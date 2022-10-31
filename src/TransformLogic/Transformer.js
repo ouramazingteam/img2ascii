@@ -27,7 +27,11 @@ export function Transformer() {
 
 
     const copy_to_clipboard = (string) => {
-        navigator.clipboard.writeText(string);
+        try {
+            navigator.clipboard.writeText(string);
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     return (
