@@ -38,20 +38,20 @@ export function Transformer() {
         <div>
             <form id='user-input' onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <input type="file" {...register("image")}></input>
+                    <input type="file" {...register("image", {required: true})}></input>
                 </div>
                 <div>
-                    Scale: <input type="text" {...register("scale")}/>
+                    Scale: <input type="text" placeholder="0.25" {...register("scale")}/>
                 </div>
                 <div>
-                    Distr_type: <input type="text" {...register("distrType")}/>
+                    Distr_type: <input type="text" placeholder="fill" {...register("distrType")}/>
                 </div>
                 <div>
                     Invert: <input type="checkbox" {...register("invert")}/>
                 </div>
                 <div>
                     <button type="submit">Ok</button>
-                    <button onClick={copy_to_clipboard(text)}>Copy</button>
+                    <button onClick={() => copy_to_clipboard(text)}>Copy</button>
                 </div>
                 <textarea value={text} spellCheck="false" style={{width: "1000px", height: "1000px", fontSize: "7px", backgroundColor: "#112", color: "#bbb"}}/>
             </form>
