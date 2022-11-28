@@ -34,6 +34,9 @@
   <!-- Main Script -->
   <script src="assets/js/app.js" defer></script>
 
+  <!-- Plot Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -144,17 +147,40 @@
           <div class="container">
 
             <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-              <h2>Сервисы</h2>
-              <p>Предоствим Вам немного статистики о нашем сайте и ASCII :)</p>
+              <h2>Статистика</h2>
+              <p>Предоствим Вам немного информации о популярности нашего сервиса :)</p>
             </div>
 
-              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <div class="icon"><i class="bx bx-world"></i></div>
-                  <h4 class="title"><a href="">Сюда надо добавить график</a></h4>
-                  <p class="description">Сам график</p>
-                </div>
-              </div>
+            <div>
+              <canvas id="myChart"></canvas>
+              <script>
+                const ctx = document.getElementById('myChart');
+
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ['Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь'],
+                    datasets: [{
+                      label: 'Количество генераций',
+                      data: [Math.floor(Math.random() * (100000)),
+                        Math.floor(Math.random() * (100000)),
+                        Math.floor(Math.random() * (100000)),
+                        Math.floor(Math.random() * (100000)),
+                        Math.floor(Math.random() * (100000)),
+                        Math.floor(Math.random() * (100000))],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+              </script>
+            </div>
 
           </div>
         </section><!-- End Services Section -->
